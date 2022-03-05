@@ -24,11 +24,11 @@ print("Navigating to webpage..", driver.title)
 # TO load DOM
 time.sleep(1)
 
-# To login to google
-search = driver.find_elements_by_class_name("CwaK9")
-for i in search:
+# To login to google TODO: Make this a separate file for google login
+sign_in_buttons = driver.find_elements_by_class_name("CwaK9")
+for button in sign_in_buttons:
     try:
-        i.click()
+        button.click()
     except:
         pass    
 
@@ -39,15 +39,16 @@ user_name = driver.find_element_by_id("identifierId")
 user_name.send_keys(username)
 
 next = driver.find_element_by_class_name("VfPpkd-vQzf8d").click()
+
 pass_word = driver.find_element_by_name("password")
 pass_word.send_keys(password)
-time.sleep(2)
+
+time.sleep(2) #TODO: Use explicit waits
+
 done = driver.find_element_by_class_name("VfPpkd-vQzf8d").click()
 
 
 # To fill out the form
-
-print("before searching")
 
 time.sleep(5)
 cnt = 0
@@ -63,5 +64,5 @@ submit = driver.find_element_by_xpath('//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1
 
 
 #close the tab
-#time.sleep(5)
+time.sleep(3)
 #driver.close()
