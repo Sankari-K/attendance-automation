@@ -7,8 +7,10 @@ I'm supposed to fill up the same google form with details such as my name, email
 * [Chrome Driver](https://chromedriver.chromium.org/) - Used by selenium to control Chrome
 
 #### Note:
-Create a file called ```secrets.py``` that looks like this:
+* Make sure ```chromedriver.exe``` is in the ```C:\Program Files (x86)``` directory
+* Create a file called ```secrets.py``` that looks like this:
 ```
     username = "your_email@gmail.com"
     password = "your_password"
 ```
+* Run ```first_time.py``` once, to store login information in a ```cookies.pkl``` file. Whenever the form needs to be filled, run ```attendance_automation.py```
