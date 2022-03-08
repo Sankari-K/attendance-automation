@@ -19,7 +19,7 @@ options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(PATH,  options=options)
 
 # Go to the webpage
-driver.get("https://forms.gle/7JrmBy57Ba4cvbBi6") #TODO: Get user input and validate
+driver.get("https://forms.gle/YzboNAdycjaDhMnm9") #TODO: Get user input and validate
 print("Navigating to webpage: ", driver.title)
 
 # To locate and click on the sign in button 
@@ -80,11 +80,16 @@ time.sleep(5)
 cnt = 0
 
 for i in range(len(creds)):
-    details = driver.find_element_by_css_selector(selector[i])
-    details.click()
-    details.send_keys(creds[i])
+    try:
+        # Find the input field
+        details = driver.find_elements_by_xpath("//input[@class='whsOnd zHQkBf']")
+        details[i].click()
+        # Enter the required information
+        details[i].send_keys(creds[i])
+    except Exception as e:
+        print(e)
 print("Done") 
-submit = driver.find_element_by_xpath('//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div/span/span').click()
+submit = driver.find_element_by_xpath("//span[@class='NPEfkd RveJvd snByac']").click()
 
 
 #close the tab
